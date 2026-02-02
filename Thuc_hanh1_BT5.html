@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>HR Management</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f5f6fa;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(to right, #111, #333);
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+header nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+header nav a:hover {
+    color: #fff;
+}
+
+header .search {
+    display: flex;
+    gap: 6px;
+}
+
+header input {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+}
+
+header button {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* ===== MAIN ===== */
+.container {
+    width: 90%;
+    margin: 25px auto;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar h3 {
+    margin: 0;
+}
+
+.add-btn {
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    background: #fff;
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-weight: 500;
+    color: #222;
+}
+
+th {
+    font-weight: 700;
+    color: #000;
+}
+
+
+th {
+    background: #fff;
+}
+
+
+.action-btn {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.edit {
+    background: #ffc107;
+    color: #000;
+}
+
+.delete {
+    background: #dc3545;
+}
+
+/* ===== FORM ===== */
+.form-box {
+    display: none;
+    width: 700px;
+    background: #fff;
+    margin: 30px auto;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.form-header {
+    background: #0d6efd;
+    color: #fff;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-body {
+    padding: 20px;
+    padding-bottom: 90px;
+}
+
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 7px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.sex-group {
+    margin-top: 10px;
+}
+
+.form-footer {
+    text-align: right;
+    padding: 10px 20px 20px;
+}
+
+.save {
+    background: #198754;
+    color: #fff;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cancel {
+    background: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.sex-options {
+    margin-top: 6px;
+}
+
+.sex-options label {
+    margin-right: 15px;
+    font-size: 14px;
+}
+.form-box {
+    overflow: visible;
+}
+
+.form-group select {
+    position: relative;
+    z-index: 10;
+}
+
+.form-footer {
+    text-align: right;
+    padding: 15px 20px 20px;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
+header button {
+    padding: 6px 14px;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="left">
+        <h2>HR Management</h2>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+    <div class="search">
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+</header>
+
+<div class="container">
+    <div class="top-bar">
+        <h3>Employee</h3>
+        <button class="add-btn" onclick="toggleForm()">+ Add</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Position</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Fatima Beatriz</td>
+                <td>FatimaBeatriz@gmail.com</td>
+                <td>0985674321</td>
+                <td>Staff</td>
+                <td>
+                    <button class="action-btn edit">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Gabriel Hanna</td>
+                <td>GabrielHanna@gmail.com</td>
+                <td>0353674231</td>
+                <td>Staff</td>
+                <td>
+                    <button class="action-btn edit">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Charles Diya</td>
+                <td>CharlesDiya@gmail.com</td>
+                <td>0347658833</td>
+                <td>Staff</td>
+                <td>
+                    <button class="action-btn edit">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Frank Lamdo</td>
+                <td>FrankLamdo@gmail.com</td>
+                <td>0975444768</td>
+                <td>Manager</td>
+                <td>
+                    <button class="action-btn edit">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Louis Tom</td>
+                <td>LouisTom@gmail.com</td>
+                <td>0789568223</td>
+                <td>Staff</td>
+                <td>
+                    <button class="action-btn edit">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- FORM -->
+    <div class="form-box" id="formBox">
+        <div class="form-header">
+            <span>New Employee</span>
+            <span style="cursor:pointer" onclick="toggleForm()">✕</span>
+        </div>
+
+        <div class="form-body">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>Position</label>
+                    <select>
+                        <option>-- Select Position --</option>
+                        <option>Staff</option>
+                        <option>Manager</option>
+                        <option>CEO</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="sex-group">
+    <label>Sex</label>
+    <div class="sex-options">
+        <label><input type="radio" name="sex"> Male</label>
+        <label><input type="radio" name="sex"> Female</label>
+    </div>
+</div>
+
+        </div>
+
+        <div class="form-footer">
+            <button class="save">Save</button>
+            <button class="cancel" onclick="toggleForm()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleForm() {
+    const form = document.getElementById("formBox");
+    form.style.display = (form.style.display === "none" || form.style.display === "")
+        ? "block"
+        : "none";
+}
+</script>
+
+</body>
+</html>
