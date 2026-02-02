@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bài tập 04 - Form</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    width: 720px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+h4 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+    margin-top: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+td {
+    padding: 6px;
+    vertical-align: top; /* ⭐ FIX QUAN TRỌNG: canh label với tick */
+}
+td:first-child {
+    width: 200px;
+    white-space: nowrap;
+}
+label {
+    font-weight: bold;
+}
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+.static-text {
+    display: inline-block;
+    width: 100%;
+    padding: 4px 6px;
+    background: #f3f3f3;
+    border: 1px solid #ccc;
+    font-weight: bold;
+}
+.gender-option {
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+.photo-box {
+    border: 1px solid #999;
+    padding: 6px;
+    background: #f8f8f8;
+    font-weight: bold;
+}
+.notes-box {
+    border: 1px solid #999;
+    background: #fff;
+    padding: 6px;
+    height: 90px;
+    font-weight: bold;
+}
+.captcha {
+    font-family: monospace;
+    letter-spacing: 3px;
+    background: #eee;
+    padding: 6px;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+.btn-black, .nav-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+}
+.required {
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+<form>
+<div class="container">
+
+<h4>Basic Info</h4>
+<table>
+<tr><td><label>Employee ID</label></td><td>9</td></tr>
+<tr><td><label>Last Name</label></td><td>Dodsworth</td></tr>
+<tr><td><label>First Name</label></td><td><input type="text" value="Anne"></td></tr>
+
+<tr>
+<td><label>Gender</label></td>
+<td>
+    <div class="gender-option"><input type="radio" name="g"> Male</div>
+    <div class="gender-option"><input type="radio" name="g"> Female</div>
+    <div class="gender-option"><input type="radio" name="g"> xxx</div>
+    <div class="gender-option"><input type="radio" name="g" checked> zzz</div>
+</td>
+</tr>
+
+<tr><td><label>Title</label></td><td><input type="text" value="Sales Representative"></td></tr>
+<tr><td><label>Suffix</label></td><td><input type="text" value="Ms."></td></tr>
+<tr><td><label>BirthDate</label></td><td><input type="text" value="1969-07-02 00:00:00"></td></tr>
+<tr><td><label>HireDate</label></td><td><input type="text" value="1994-11-15 00:00:00"></td></tr>
+<tr><td><label>SSN # (if applicable)</label></td><td><input type="text"></td></tr>
+
+<tr>
+<td><label>Reports To</label></td>
+<td>
+    <select>
+        <option selected>Buchanan</option>
+        <option>Fuller</option>
+        <option>Leverling</option>
+    </select>
+</td>
+</tr>
+</table>
+
+<h4>Contact Info</h4>
+<table>
+<tr><td><label>Email</label></td><td><input type="email" placeholder="name@example.com"></td></tr>
+<tr><td><label>Address</label></td><td><input type="text" value="7 Houndstooth Rd."></td></tr>
+<tr><td><label>City</label></td><td><input type="text" value="London"></td></tr>
+<tr><td><label>Region</label></td><td><input type="text"></td></tr>
+<tr><td><label>Postal Code</label></td><td><input type="text" value="WG2 7LT"></td></tr>
+
+<tr>
+<td><label>Country</label></td>
+<td>
+    <select>
+        <option selected>Russian Federation</option>
+        <option>USA</option>
+        <option>UK</option>
+        <option>Germany</option>
+    </select>
+</td>
+</tr>
+
+<tr><td><label>US Home Phone</label></td><td><input type="text" value="(234)234-2342"></td></tr>
+<tr><td><label>Photo</label></td><td><div class="photo-box">EmpID9.bmp</div></td></tr>
+</table>
+
+<h4>Optional Info</h4>
+<table>
+<tr>
+<td><label>Notes</label></td>
+<td>
+    <div class="notes-box">
+        Anne has a BA degree in English from St. Lawrence College.<br>
+        She is fluent in French and German.
+    </div>
+</td>
+</tr>
+
+<tr>
+<td><label>Preferred Shift</label></td>
+<td>
+    <div><input type="checkbox"> Regular</div>
+    <div><input type="checkbox" checked> Grave Yard</div>
+</td>
+</tr>
+
+<tr>
+<td><label>Active?</label></td>
+<td><input type="checkbox" checked></td>
+</tr>
+
+<tr>
+<td><label>Are you human?</label></td>
+<td>
+    <div class="captcha">T·I·D·A·W·O</div>
+    <input type="text">
+</td>
+</tr>
+</table>
+
+<div class="actions">
+    <div>
+        <button type="button" class="nav-btn">◀</button>
+        <button type="button" class="nav-btn">▶</button>
+        <div class="required">* required</div>
+    </div>
+    <div>
+        <button class="btn-black">Submit</button>
+        <button class="btn-black" type="reset">Cancel</button>
+    </div>
+</div>
+
+</div>
+</form>
+</body>
+</html>
