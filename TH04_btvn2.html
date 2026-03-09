@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Multi Step Form</title>
+
+<style>
+
+.step{
+display:none;
+}
+
+.active{
+display:block;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Đăng ký nhiều bước</h2>
+
+<div id="progress">Bước 1 / 3</div>
+
+<form>
+
+<!-- STEP 1 -->
+
+<div class="step active" id="step1">
+
+<label>Họ tên</label><br>
+<input type="text" id="name"><br><br>
+
+<label>Ngày sinh</label><br>
+<input type="date" id="dob"><br><br>
+
+<label>Giới tính</label><br>
+<input type="radio" name="gender"> Nam
+<input type="radio" name="gender"> Nữ<br><br>
+
+<button type="button" onclick="nextStep()">Tiếp theo</button>
+
+</div>
+
+
+<!-- STEP 2 -->
+
+<div class="step" id="step2">
+
+<label>Email</label><br>
+<input type="email" id="email"><br><br>
+
+<label>Mật khẩu</label><br>
+<input type="password" id="pass"><br><br>
+
+<label>Xác nhận</label><br>
+<input type="password" id="confirm"><br><br>
+
+<button type="button" onclick="prevStep()">Quay lại</button>
+<button type="button" onclick="nextStep()">Tiếp theo</button>
+
+</div>
+
+
+<!-- STEP 3 -->
+
+<div class="step" id="step3">
+
+<h3>Xác nhận thông tin</h3>
+
+<div id="summary"></div>
+
+<button type="button" onclick="prevStep()">Quay lại</button>
+<button type="submit">Đăng ký</button>
+
+</div>
+
+</form>
+
+<script>
+
+let currentStep=1
+
+function showStep(step){
+
+document.querySelectorAll(".step").forEach(s=>s.classList.remove("active"))
+
+document.getElementById("step"+step).classList.add("active")
+
+document.getElementById("progress").textContent="Bước "+step+" / 3"
+
+}
+
+function nextStep(){
+
+if(currentStep<3){
+
+currentStep++
+
+if(currentStep==3){
+
+document.getElementById("summary").innerHTML=
+"Tên: "+document.getElementById("name").value+"<br>"+
+"Email: "+document.getElementById("email").value
+
+}
+
+showStep(currentStep)
+
+}
+
+}
+
+function prevStep(){
+
+if(currentStep>1){
+
+currentStep--
+
+showStep(currentStep)
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
